@@ -4,10 +4,7 @@ import instantiateModule from "../../lib/vhacd-wasm.js";
 import { VHACD } from "../vhacd-wasm-api.js";
 
 describe("test", async () => {
-  let vhacd: typeof VHACD;
-  before(async () => {
-    vhacd = await instantiateModule();
-  });
+  let vhacd: typeof VHACD = await instantiateModule();
 
   it("Parameters", () => {
     const params = new vhacd.Parameters();

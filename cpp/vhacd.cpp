@@ -19,14 +19,14 @@ EM_JS(void, consoleLog, (const char* msg), {
 
 class JsHull {
 private:
-  IVHACD::ConvexHull const* m_hull;
+  IVHACD::ConvexHull m_hull;  // Note: Changed from a pointer to an object
 public:
-  explicit JsHull(IVHACD::ConvexHull const* hull) : m_hull(hull) { }
+  explicit JsHull(const IVHACD::ConvexHull* hull) : m_hull(*hull) { }
 
-  uint32_t GetPoints() const { return reinterpret_cast<uint32_t>(&(m_hull->m_points[0].mX)); }
-  uint32_t GetNumPoints() const { return static_cast<uint32_t>(m_hull->m_points.size()); }
-  uint32_t GetTriangles() const { return reinterpret_cast<uint32_t>(&(m_hull->m_triangles[0].mI0)); }
-  uint32_t GetNumTriangles() const { return static_cast<uint32_t>(m_hull->m_triangles.size()); }
+  uint32_t GetPoints() const { return reinterpret_cast<uint32_t>(&(m_hull.m_points[0].mX)); }
+  uint32_t GetNumPoints() const { return static_cast<uint32_t>(m_hull.m_points.size()); }
+  uint32_t GetTriangles() const { return reinterpret_cast<uint32_t>(&(m_hull.m_triangles[0].mI0)); }
+  uint32_t GetNumTriangles() const { return static_cast<uint32_t>(m_hull.m_triangles.size()); }
 };
 
 enum MessageType {

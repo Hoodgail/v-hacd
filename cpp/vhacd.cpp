@@ -76,8 +76,12 @@ public:
 
     if (m_vhacd->Compute(reinterpret_cast<double const*>(points), nPoints, reinterpret_cast<uint32_t const*>(triangles), nTriangles, m_parameters)) {
       uint32_t nHulls = m_vhacd->GetNConvexHulls();
-      for (uint32_t i = 0; i < nHulls; i++)
-        hulls.push_back(JsHull(m_vhacd->GetConvexHull(i)));
+      for (uint32_t i = 0; i < nHulls; i++) {
+        IVHACD::ConvexHull hull;
+        if (m_vhacd->GetConvexHull(i, hull)) {
+          hulls.push_back(JsHull(&hull));
+        }
+      }
     }
 
     return hulls;

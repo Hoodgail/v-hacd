@@ -11,10 +11,10 @@
     "url": "https://github.com/Hoodgail/v-hacd"
   },
   "scripts": {
-    "build": "npm run build:wasm && npm run build:ts",
+    "build": "npm run build:wasm && npm run build:ts", 
     "build:optimized": "npm run build:wasm:optimized && npm run build:ts",
     "build:ts": "tsc 1>&2",
-    "build:wasm": "mkdir -p lib && emcc -lembind -o lib/vhacd-wasm.js -sALLOW_MEMORY_GROWTH -sSINGLE_FILE=1 cpp/vhacd.cpp -sMODULARIZE=1 -sEXPORT_ES6=1 -sUSE_ES6_IMPORT_META=0 --pre-js cpp/pre.js",
+    "build:wasm": "mkdir lib && emcc -lembind -o lib/vhacd-wasm.js -sALLOW_MEMORY_GROWTH -sSINGLE_FILE=1 cpp/vhacd.cpp -sMODULARIZE=1 -sEXPORT_ES6=1 -sUSE_ES6_IMPORT_META=1 --pre-js cpp/pre.js",
     "build:wasm:optimized": "mkdir -p lib && emcc -lembind -o lib/vhacd-wasm.js -sALLOW_MEMORY_GROWTH -sSINGLE_FILE=1 cpp/vhacd.cpp -sMODULARIZE=1 -sEXPORT_ES6=1 -sUSE_ES6_IMPORT_META=0 --pre-js cpp/pre.js -Oz",
     "clean": "rimraf lib",
     "test": "mocha ./lib/test"

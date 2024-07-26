@@ -1,5 +1,5 @@
 {
-  "name": "vhacd-js",
+  "name": "vhacd",
   "version": "0.0.1",
   "description": "Voxelized hierarchical approximate convex mesh decomposition",
   "module": "./lib/vhacd.js",
@@ -8,7 +8,7 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pmconne/v-hacd-js"
+    "url": "https://github.com/Hoodgail/v-hacd"
   },
   "scripts": {
     "build": "npm run build:wasm && npm run build:ts",
@@ -27,10 +27,16 @@
     "mesh",
     "decomposition"
   ],
-  "author": {
+ "authors": [
+  {
     "name": "Paul Connelly",
     "url": "https://github.com/pmconne"
   },
+  {
+    "name": "Hoodgail Benjamin",
+    "url": "https://github.com/hoodgail"
+  }
+],
   "devDependencies": {
     "@types/chai": "4.3.1",
     "@types/mocha": "^8.2.2",

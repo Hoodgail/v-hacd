@@ -5,17 +5,17 @@ using namespace emscripten;
 
 #define ENABLE_VHACD_IMPLEMENTATION 1
 #define VHACD_DISABLE_THREADING 1
-#include "../include/VHACD.h"
+#include "../library/include/VHACD.h"
 
 using namespace VHACD;
 
 using Parameters = IVHACD::Parameters;
 
-static_assert(sizeof(double *) == 4, "wasm uses 32-bit pointers");
+static_assert(sizeof(double*) == 4, "wasm uses 32-bit pointers");
 
 EM_JS(void, consoleLog, (const char* msg), {
   console.log("LOG: " + UTF8ToString(msg));
-});
+  });
 
 class JsHull {
 private:
